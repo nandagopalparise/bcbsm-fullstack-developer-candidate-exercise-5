@@ -1,0 +1,17 @@
+package com.demo.interview.mappers;
+
+import com.demo.interview.dtos.SignUpDto;
+import com.demo.interview.dtos.UserDto;
+import com.demo.interview.entites.User;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
+@Mapper(componentModel = "spring")
+public interface UserMapper {
+
+    UserDto toUserDto(User user);
+
+    @Mapping(target = "password", ignore = true)
+    User signUpToUser(SignUpDto signUpDto);
+
+}

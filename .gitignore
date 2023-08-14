@@ -4,9 +4,9 @@
 
 # dependencies
 frontend/node_modules
+frontend/.angular/cache
 /.pnp
 .pnp.js
-frontend/.angular
 
 # testing
 /coverage

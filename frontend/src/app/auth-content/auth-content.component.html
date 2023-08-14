@@ -1,0 +1,49 @@
+<div class="row justify-content-md-center mt-5">
+  <div class="col-4">
+    <div class="card" style="width: '18rem'">
+      <div class="card-body">
+        <h5 class="card-title">Email Service</h5>
+        <h6> Enter ToEmail: </h6>
+        <input type="text" (change)="onEmailSelect($event)" />
+
+        <h6 class="mt-2"> Select a PDF File </h6>
+        <input style="display: none" type="file" (change)="onFileSelect($event)" #hiddenfileinput>
+        <button (click)="hiddenfileinput.click()" type="button" class="btn btn-outline-secondary">Select File</button>
+        <p>{{selectedFile?.name}}</p>
+        <button (click)="sendEmail()" type="button" class="btn btn-outline-primary m-2">Send</button>
+        <div class="alert alert-primary" role="alert">
+          {{emailStatus}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-md-center mt-5">
+  <div class="col-6">
+    <h5 class="card-title mb-3">Recent Emails</h5>
+
+    <h6> Search by File Name: </h6>
+    <input type="text" (change)="search($event)" />
+
+    <table class="table table-hover table-dark table-striped nowrap mt-3">
+      <thead>
+        <tr>
+          <th scope="col">To</th>
+          <th scope="col">File Name</th>
+          <th scope="col">From</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of filteredData">
+          <td>{{ x?.toEmail }}</td>
+          <td>{{ x?.fileName }}</td>
+          <td>{{ x?.fromEmail }}</td>
+          <td>{{ x?.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
